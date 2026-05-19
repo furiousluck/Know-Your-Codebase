@@ -38,6 +38,37 @@ The client runs on `http://127.0.0.1:5173`.
 
 The API runs on `http://127.0.0.1:8787`.
 
+## Docker
+
+Build the production image:
+
+```bash
+docker build -t codebase-rag-phase-1 .
+```
+
+Run it with your environment file:
+
+```bash
+docker run --env-file .env -p 8787:8787 codebase-rag-phase-1
+```
+
+Then open:
+
+```text
+http://localhost:8787
+```
+
+For deployed environments, set at least:
+
+```text
+MONGODB_URI
+GEMINI_API_KEY
+OPENROUTER_API_KEY
+CLIENT_ORIGIN
+```
+
+The container serves both the API and the built React app from the same Express server.
+
 ## Phase 1.5 Index Reuse
 
 Before indexing, the server resolves the latest GitHub commit SHA for the requested branch.
